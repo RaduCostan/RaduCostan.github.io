@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+   <link href="CSS/Music.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="JS/jsmusic.js"></script>
+    
+    <style>
+        #playlist{
+            list-style: none;
+            position: fixed; top: 100px
+        }
+        #playlist li a{
+            color:white;
+            text-decoration: none;
+        }
+        #playlist .current-song a{
+            color:blue;
+        }
+    </style>
+    
+</head>
+    
+<body>
+
+    
+    <h1>Music</h1>
+    <hr>
+    
+    <a href="index.html" class="button button1">Home</a>
+        <a href="Photos.html" class="button button2">Photos</a>
+        <a href="Music.html" class="button button3">Music</a>
+        <a href="Store.html" class="button button5">Store</a>
+        <a href="Contact.html" class="button button6">Contact</a>
+        <a href="Tour.html" class="button button7">Assingment info</a>
+    
+    
+     <audio src="" controls id="audioPlayer">
+        Sorry, your browser doesn't support html5!
+    </audio>
+    
+    <ul id="playlist">
+        <li class="current-song"><a href="Assets/02%20-%20Retaliation.mp3">Violent by design - Retaliation</a></li>
+        <li><a href="Assets/03%20-%20Contra%20(Feat.%20Killa%20Sha).mp3">Violent by design - Contra</a></li>
+        <li><a href="Assets/04%20-%20Speech%20Cobras%20(Feat.%20Mr.%20Lif).mp3">Violent by design - Speech Cobras</a></li>
+        <li><a href="Assets/08%20-%20I%20Against%20I%20(Feat.%20Planetary).mp3">Violent by design - I Against I </a></li>
+        <li><a href="Assets/11%20-%20Heavenly%20Divine.mp3">Violent by design - Heavenly Divine </a></li>
+        <li><a href="Assets/12%20-%20Sacrifice.mp3">Violent by design - Sacrifice </a></li>
+        <li><a href="Assets/14%20-%20Deer%20Hunter%20(Feat.%20Chief%20Kamachi).mp3">Violent by design - Deer Hunter </a></li>
+        <li><a href="Assets/15%20-%20Blood%20Reign%20(Feat.%20Diamondback,%20Lous%20Logic%20&%20B.A.%20Barakus).mp3">Violent by design - Blood Reign </a></li>
+        <li><a href="Assets/21%20-%20Heavenly%20Design%20%5BRemix%5D.mp3">Violent by design - Heavenly Design </a></li>
+        <li><a href="Assets/25%20-%20Blood%20Runs%20Cold%20(Feat.%20Sean%20Price%20Aka%20Ruck%20Of%20Heltah%20Skeltah).mp3">Violent by design - Blood Runs Cold </a></li>
+        <li>black space</li>
+        <li><a href="Assets/12%20-%20I%20Who%20Have%20Nothing.mp3">The Psycho-Social, Chemical, Biological, And Electro-Magnetic Manipulation - I Who Have Nothing</a></li>
+        <li><a href="Assets/13%20-%20Communion%20The%20Crop%20Circle%20Thesis.mp3">The Psycho-Social, Chemical, Biological, And Electro-Magnetic Manipulation - Communion The Crop Circle Thesis</a></li>
+        <li><a href="Assets/14%20-%20Onetwothree.mp3">The Psycho-Social, Chemical, Biological, And Electro-Magnetic Manipulation - OneTwoThree</a></li>
+        <li><a href="Assets/15%20-%20Souls%20From%20The%20Streets.mp3">The Psycho-Social, Chemical, Biological, And Electro-Magnetic Manipulation - Souls From The Street</a></li>
+        <li><a href="Assets/16%20-%20Last%20Straw%20(Onesoul%20Remix).mp3">The Psycho-Social, Chemical, Biological, And Electro-Magnetic Manipulation - Last Straw</a></li>
+        <li><a href="Assets/17%20-%20Tug%20Of%20War.mp3">The Psycho-Social, Chemical, Biological, And Electro-Magnetic Manipulation - Tug of War</a></li>
+        <li><a href="Assets/18%20-%20Get%20This%20Low.mp3">The Psycho-Social, Chemical, Biological, And Electro-Magnetic Manipulation - Get This Low</a></li>
+        <li>black space</li>
+        <li><a href="Assets/02%20-%20Tibetan%20Black%20Magicians%20(Feat.%20Canibus).mp3">Visions of Gandhi - Tibetan Black Magicians</a></li>
+        <li><a href="Assets/12%20-%20Rise%20Of%20The%20Machines%20(Feat.%20Ras%20Kass).mp3">Visions of Gandhi - Rise of the Machines</a></li>
+        <li><a href="Assets/03%20-%20Blood%20In%20Blood%20Out.mp3">Visions of Gandhi - Blood In Blood Out</a></li>
+        <li><a href="Assets/07%20-%20Nada%20Cambia.mp3">Visions of Gandhi - Nada Cambia</a></li>
+    
+    </ul>
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script src="audioPlayer.js"></script>
+    <script>
+        audioPlayer();
+        function audioPlayer(){
+            var currentSong = 0;
+            $("#audioPlayer")[0].src = $("#playlist li a")[0];
+            $("#audioPlayer")[0].pause();
+            $("#playlist li a").click(function(e){
+               e.preventDefault(); 
+               $("#audioPlayer")[0].src = this;
+               $("#audioPlayer")[0].play();
+               $("#playlist li").removeClass("current-song");
+                currentSong = $(this).parent().index();
+                $(this).parent().addClass("current-song");
+            });
+            
+            $("#audioPlayer")[0].addEventListener("ended", function(){
+               currentSong++;
+                if(currentSong == $("#playlist li a").length)
+                    currentSong = 0;
+                $("#playlist li").removeClass("current-song");
+                $("#playlist li:eq("+currentSong+")").addClass("current-song");
+                $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+                $("#audioPlayer")[0].play();
+            });
+        }
+    </script>
+        
+</body>
+</html> 
