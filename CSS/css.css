@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color:black;
     overflow:scroll; 
     
 }
@@ -29,7 +29,36 @@ p3{
     position:fixed;left: 40%; top: 74%;
 }
 
-    
+a.{
+    position: absolute;left: 40%; top: 74%;
+}
+
+
+
+#nameofuser{
+    position: absolute;left: 1.5%; top: 14%;
+}
+#submit{
+    position: absolute;left: 9%; top: 14%;
+}
+
+
+#namebox{
+    position: absolute;left: 1.5%; top: 18%;
+    color: white
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 a.button{
                     background-color: black; 

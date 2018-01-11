@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
+    <head>    
+        <title>Main Page</title>
         <link href="CSS/css.css" rel="stylesheet" type="text/css"/>
+        
         <style>
             
         </style>
+        <script>
+        var Name = "";
+       
+        window.onload = function() {
+            getName()
+        }
+        
+        function save(){
+            Name = document.getElementById("nameofuser").value;
+            localStorage.setItem("name", Name);  
+        }
+            
+        function getName(){ 
+            Name = localStorage.getItem("name");
+            console.log(Name)
+            document.getElementById("namebox").innerHTML = "Welcome " + Name;
+        }    
+        
+        
+        
+        
+        </script>
+                
     </head>
     
     <body>
         
-        <div>
+        
             
             <p1> Jedi Mind tricks is a underground hip-hop duo from Philadelphia.</p1> 
             <p2> This website informs the public about them by displaying their music, images, and selling the merchendise </p2>
             <p3> Jedi mind Tricks no longer play music live and are currently retired </p3>
             
-        </div>
+        
         
         
         <img src="Assets/JMT-horizontal-2015-white.png" alt="JMT" width="1770" height="200">
@@ -28,13 +53,14 @@
         <a href="Contact.html" class="button button6">Contact</a>
         <a href="Tour.html" class="button button7">Assingment info</a>
              
+        <input type="text" id="nameofuser" placeholder="Enter your Name">
+        <button type="button" onclick="save()" id="submit">Submit</button>
         
-        <div id="theirName"> </div>
-        <script>
+        <div class=nameboxbox>
+        <p4 id="namebox"></p4>
+        </div>
+       
         
-        
-        
-        </script>
         
     
         
